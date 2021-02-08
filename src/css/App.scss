@@ -331,3 +331,59 @@ header {
 em.ais-Highlight-highlighted {
   background-color: #efdeff;
 }
+
+.ais-Pagination-list {
+  margin: 80px auto 50px;
+  display: flex;
+  justify-content: space-between;
+
+  a {
+    text-decoration: none;
+    color: #3790f8;
+  }
+
+  .ais-Pagination-item--nextPage > a,
+  .ais-Pagination-item--nextPage > span,
+  .ais-Pagination-item--previousPage > a,
+  .ais-Pagination-item--previousPage > span,
+  .ais-Pagination-item--firstPage > a,
+  .ais-Pagination-item--firstPage > span,
+  .ais-Pagination-item--lastPage > a,
+  .ais-Pagination-item--lastPage > span {
+    border-radius: 5px;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+    min-width: 64px;
+    height: 40px;
+    color: #3790f8;
+    font-size: 30px;
+    padding-bottom: 15px;
+
+    @media screen and (max-width: 1024px) {
+      min-width: 30px;
+    }
+  }
+
+  .ais-Pagination-item--disabled {
+    display: none;
+  }
+
+  .ais-Pagination-link {
+    padding: 10px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.ais-Pagination-link--selected {
+      background: #3790f8;
+      border-radius: 100px;
+      color: #FFF;
+      font-weight: 700;
+    }
+  }
+
+  .ais-Pagination-item.ais-Pagination-item--page {
+    display: flex;
+    align-items: center;
+  }
+}
