@@ -34,7 +34,7 @@ class App extends Component {
                 </svg>
               </div>
               <div id="logo">
-                <img src="logo-white.svg" alt="Zoom" loading="lazy" />
+                <img src="img/logo-white.svg" alt="Zoom" loading="lazy" />
               </div>
               <div id="search">
                 <SearchBox
@@ -47,19 +47,36 @@ class App extends Component {
               </div>
             </div>
           </header>
-          <div className="left-panel">
-            <ClearRefinements
-              translations={{
-                reset: 'Limpar filtos',
-              }}
-            />
-            <h2>Tags</h2>
-            <RefinementList attribute="tags" />
-            <Configure hitsPerPage={8} />
+          <div id="hero">
+            <div class="container">
+              <img
+                src="img/deumzoom_logo.svg"
+                alt="Dê um Zoom, reviews de produtos"
+              />
+            </div>
           </div>
-          <div className="right-panel">
-            <Hits hitComponent={Hit} />
-            <Pagination />
+          <div id="articles">
+            <div class="container">
+              <div className="left-panel filters">
+                <h2>
+                  Filtrar por:{' '}
+                  <ClearRefinements
+                    translations={{
+                      reset: 'Limpar',
+                    }}
+                  />
+                </h2>
+                <h3>Tags</h3>
+                <RefinementList attribute="tags" />
+                <h3>Autores</h3>
+                <RefinementList attribute="author.name" />
+              </div>
+              <div className="right-panel article-list">
+                <Hits hitComponent={Hit} />
+                <Configure hitsPerPage={8} />
+                <Pagination />
+              </div>
+            </div>
           </div>
         </InstantSearch>
       </div>
@@ -69,26 +86,45 @@ class App extends Component {
 
 function Hit(props) {
   return (
-    <div>
+    <a href={props.hit.url} class="article">
       <img
         src={props.hit.imageUrl}
-        width="300"
+        class="article-img"
         alt={props.hit.title}
         loading="lazy"
       />
-      <div className="hit-name">
-        <Highlight attribute="title" hit={props.hit} />
+      <div class="article-text">
+        <div class="article-text-top">
+          <div className="article-tag">
+            <Highlight attribute="tags[0]" hit={props.hit} />
+          </div>
+          <h3 className="article-title">
+            <Highlight attribute="title" hit={props.hit} />
+          </h3>
+          <p className="article-subtitle">
+            <Highlight attribute="subtitle" hit={props.hit} />
+          </p>
+        </div>
+        <div className="article-meta">
+          Por <span class="article-meta-author">{props.hit.author.name}</span> -{' '}
+          <span class="article-meta-date">
+            {parseDate(props.hit.timestamp)}
+          </span>
+        </div>
       </div>
-      <div className="hit-description">
-        <Highlight attribute="description" hit={props.hit} />
-      </div>
-      <div className="hit-price">${props.hit.price}</div>
-    </div>
+    </a>
   );
 }
 
 Hit.propTypes = {
   hit: PropTypes.object.isRequired,
 };
+
+function parseDate(date) {
+  let formattedDate = new Date(date).toLocaleDateString('pt-BR', {
+    timeZone: 'UTC',
+  });
+  return formattedDate;
+}
 
 export default App;

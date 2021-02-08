@@ -6,6 +6,8 @@
 
 body {
   font-family: 'Roboto', sans-serif;
+  line-height: 1.6em;
+  color: #212529;
 }
 
 .container {
@@ -17,6 +19,9 @@ body {
 header {
   width: 100%;
   background-color: #612a92;
+  position: fixed;
+  top: 0;
+  z-index: 1;
 
   .container {
     display: flex;
@@ -116,4 +121,213 @@ header {
   @media screen and (max-width: 768px) {
     margin-top: 10px;
   }
+}
+
+#hero {
+  background-color: #612a92;
+  background-image: url(img/background.png);
+  background-size: cover;
+  padding: 100px 0 130px;
+  margin-top: 88px;
+
+  .container {
+    display: flex;
+    justify-content: center;
+  }
+
+  img {
+    max-width: 351px;
+    width: 70%;
+  }
+
+  @media screen and (max-width: 1024px) {
+    padding-bottom: 70px;
+  }
+}
+
+#articles {
+  .container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+  }
+
+  .filters {
+    position: sticky;
+    top: 110px;
+    height: 0px;
+    margin-right: 20px;
+
+    h2 {
+      font-weight: 700;
+      font-size: 20px;
+      color: #333;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .ais-ClearRefinements-button {
+      border: 0;
+      background-color: #b0d137;
+      color: #FFF;
+      font-size: 14px;
+      outline: none;
+      padding: 6px 16px;
+      border-radius: 50px;
+      cursor: pointer;
+      margin-left: 20px;
+      font-weight: 700;
+      transition: all ease .3s;
+
+      &:hover {
+        background-color: #c1db61;
+      }
+    }
+    
+    .ais-ClearRefinements-button--disabled {
+      opacity: 0.3;
+      cursor: default;
+    }
+
+    h3 {
+      font-weight: 700;
+      font-size: 18px;
+      margin: 30px 0 10px;
+    }
+
+    .ais-RefinementList-item {
+      margin-bottom: 6px;
+    }
+
+    .ais-RefinementList-label {
+      font-size: 12px;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .ais-RefinementList-labelText {
+      padding-left: 3px;
+      margin-top: -2px;
+      text-transform: capitalize;
+    }
+
+    .ais-RefinementList-item .ais-RefinementList-count {
+      color: #ccc;
+      margin-left: .4rem;
+      margin-top: -2px;
+    }
+
+    .ais-RefinementList-count:before {
+      content: "(";
+    }
+
+    .ais-RefinementList-count:after {
+      content: ")";
+    }
+  }
+
+  .article-list {
+    max-width: 800px;
+    width: 100%;
+    margin-top: -70px;
+
+    .ais-Hits-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 30px;
+    }
+
+    .article {
+      text-decoration: none;
+      width: 100%;
+      height: 100%;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      border-radius: 5px;
+      border: 1px solid #ecf0f1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    
+      &-img {
+        width: 100%;
+      }
+    
+      &-text {
+        padding: 40px 50px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+    
+      &-tag {
+        font-weight: 700;
+        font-size: 14px;
+        color: #3790f8;
+        display: block;
+      }
+    
+      &-title {
+        font-weight: 700;
+        font-size: 18px;
+        font-family: 'Montserrat', sans-serif;
+        color: #333;
+        margin-bottom: 10px;
+      }
+    
+      &-subtitle {
+        font-weight: 400;
+        font-size: 18px;
+        color: #666;
+        margin-bottom: 20px;
+      }
+    
+      &-meta {
+        font-weight: 400;
+        font-size: 16px;
+        color: #777;
+      }
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    .container {
+      flex-direction: column;
+    }
+
+    .filters {
+      position: relative;
+      height: 50px;
+      top: 0;
+      overflow: hidden;
+      transition: all ease .3s;
+      border-bottom: 1px solid rgb(221, 221, 221);
+      margin-bottom: 20px;
+      margin-right: 0;
+
+      &:hover {
+        height: 800px;
+      }
+    }
+
+    .article-list {
+      margin-top: 0px;
+
+      .ais-Hits-list {
+        grid-template-columns: 1fr;
+      }
+
+      .article-text {
+        padding: 20px 30px;
+      }
+    }
+  }
+}
+
+/* Text highlight */
+em.ais-Highlight-highlighted {
+  background-color: #efdeff;
 }
