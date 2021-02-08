@@ -1,8 +1,6 @@
-# getting-started
+# DeUmZoom - Reviews de Produtos
 
-_This project was generated with [create-instantsearch-app](https://github.com/algolia/create-instantsearch-app) by [Algolia](https://algolia.com)._
-
-## Get started
+## How to run
 
 To run this project locally, install the dependencies and run the local server:
 
@@ -17,3 +15,5 @@ Alternatively, you may use [Yarn](https://http://yarnpkg.com/):
 yarn
 yarn start
 ```
+## Demo online
+https://codesandbox.io/s/github/gabrielzevedo/zoom-reviews
